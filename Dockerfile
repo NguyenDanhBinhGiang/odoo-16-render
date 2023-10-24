@@ -13,6 +13,7 @@ RUN mkdir /server &&  \
 WORKDIR /server
 
 RUN git clone https://github.com/NguyenDanhBinhGiang/odoo-16-e.git /server
+COPY . .
 
 # Expose Odoo services
 EXPOSE 10000 8071 8072
