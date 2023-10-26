@@ -10,9 +10,10 @@ RUN mkdir /server &&  \
     chown -R odoo /etc/odoo-data && \
     mkdir -p /etc/odoo-config  &&  \
     chown -R odoo /etc/odoo-config
-WORKDIR /server
 
+ADD https://api.github.com/repos/NguyenDanhBinhGiang/odoo-16-e/git/refs/heads/master version.json
 RUN git clone https://github.com/NguyenDanhBinhGiang/odoo-16-e.git /server
+WORKDIR /server
 COPY . .
 
 # Expose Odoo services
@@ -21,4 +22,4 @@ EXPOSE 10000 8071 8072
 USER odoo
 
 #ENTRYPOINT ["/entrypoint.sh"]
-CMD ["/server/run_server.sh"]
+CMD ["./run_server.sh"]
